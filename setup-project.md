@@ -105,7 +105,7 @@ module.exports = {
   },
 ```
 
-## 4. Husky를 사용한 #2 자동화
+## 4. Husky를 사용한 #2-3 자동화
 
 ### 4.1 husky 설치(최초 프로젝트 셋업 시에만 시행)
 
@@ -131,9 +131,14 @@ module.exports = {
 
 ## 5. Github Actions를 사용한 #3 자동화
 
-- develop branch에 Pull Request가 발생하면 해당 브랜치에서 자동으로 테스트 실행
+- 목적: 현재 develop 브랜치의 코드가 검증되었는가?
+- trigger: develop branch에 Pull Request가 발생
+  - 다른 PR이 먼저 머지되었을 떄, 현재 develop 브랜치의 코드를 바로 테스트
+- test: 현재 develop 브랜치의 코드를 테스트
+  - 테스트 코드 또한 현재 브랜치의 테스트 코드를 사용
 
-```yml
+```.yml
+// .github/workflows/testPR.yml
 name: test PR
 
 on:
