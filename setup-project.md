@@ -105,7 +105,7 @@ module.exports = {
   },
 ```
 
-## 4. Husky를 사용한 #2-3 자동화
+## 4. Husky를 사용한 #2 자동화
 
 ### 4.1 husky 설치(최초 프로젝트 셋업 시에만 시행)
 
@@ -125,6 +125,29 @@ module.exports = {
 - 커밋 이전에 코드 포맷팅
   `npx husky add .husky/pre-commit "npm run format"`
 - 푸시 이전에 린터&테스트 실행
-  `npx husky add .husky/pre-push "npm run lint"`
-  `npx husky add .husky/pre-push "npm run test"`
-  - `./husky/pre-push`의 커맨드 수정: `npm run test -- --watchAll=false`
+  - `npx husky add .husky/pre-push "npm run lint"`
+  - `npx husky add .husky/pre-push "npm run test"`
+    - `./husky/pre-push`의 커맨드 수정: `npm run test -- --watchAll=false`
+
+## 5. Github Actions를 사용한 #3 자동화
+
+- develop branch에 Pull Request가 발생하면 해당 브랜치에서 자동으로 테스트 실행
+
+```yml
+name: test PR
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: "develop"
+      - run: npm ci
+      - run: npm run test -- --watchAll=false
+```
