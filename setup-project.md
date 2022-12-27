@@ -1,5 +1,7 @@
 # team 7 프로젝트 셋업 방법
 
+> 최신 내용 업데이트: [[CI] ESLint, Prettier, Jest test 자동화로 팀 프로젝트 코드를 지속적으로 통합하기 | Husky, GitHub Actions](https://velog.io/@skyu_dev/CI-ESLint-Prettier-Jest-test-자동화로-팀-프로젝트-코드를-지속적으로-통합하기-Husky-GitHub-Actions)
+
 ## 1. CRA 프로젝트 만들기 & git 원격 저장소에 올리기
 
 - `npx create-react-app project-name`
@@ -129,11 +131,12 @@ module.exports = {
   - `npx husky add .husky/pre-push "npm run test"`
     - `./husky/pre-push`의 커맨드 수정: `npm run test -- --watchAll=false`
 
-## 5. Github Actions를 사용한 #3 자동화
+## 5. Github Actions를 사용한 #3 자동화(토론 필요)
 
 - 목적: 현재 develop 브랜치의 코드가 검증되었는가?
 - trigger: develop branch에 Pull Request가 발생
   - 다른 PR이 먼저 머지되었을 떄, 현재 develop 브랜치의 코드를 바로 테스트
+  - 너무 많이 트리거될 수 있는 우려 있음(merge close된 이후 action 돌리는 방향도 있음)
 - test: 현재 develop 브랜치의 코드를 테스트
   - 테스트 코드 또한 현재 브랜치의 테스트 코드를 사용
 
