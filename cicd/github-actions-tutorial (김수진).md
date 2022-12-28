@@ -186,11 +186,13 @@ export default App;
 ```
 
 ![19](https://user-images.githubusercontent.com/56298540/209702933-0dd2ec26-0d0f-4438-a234-5a87fbe18b31.PNG)
+
 어느 부분에서 test를 통과하지 못했는지 확인할 수 있다.
 
 ### 정상 코드로 테스트 자동화 실행하기
 
 ![20](https://user-images.githubusercontent.com/56298540/209703425-124f2696-8933-4e4f-939e-25fb61f3784a.PNG)
+
 모든 step이 작동한 것을 확인할 수 있다.
 
 ### PR할 때 제대로 test 되는지 확인해보기
@@ -198,11 +200,14 @@ export default App;
 1. 코드를 작성할 브랜치(break-tests)생성
 2. push후 pr 생성
    ![6](https://user-images.githubusercontent.com/56298540/209554509-93485f88-1590-4925-b6c9-927e04f64955.PNG)
+
    바로 test결과를 알 수 있다.
    Detail을 클릭하면 action으로 넘어가 해당 work flow에서 어디가 잘못되었는지 확인 할 수 있다.
    ![7](https://user-images.githubusercontent.com/56298540/209554654-dcc48096-3926-4828-a196-9945dd986664.PNG)
+
    PR목록에서도 확인 가능하다.
    ![9](https://user-images.githubusercontent.com/56298540/209555186-4936e1b7-bd61-4579-9e5d-bfa9e66c6077.PNG)
+
    테스트시 문제가 없으면 초록 뱃지가 뜨는 것을 확인 할 수 있다.
 
 ##### 참고. github 페이지에서 workflow 생성하기
@@ -220,10 +225,13 @@ export default App;
 #### 1. AWS에서 회원가입 후 버킷(= 저장소) 만들기
 
 ![1](https://user-images.githubusercontent.com/56298540/209651198-c164df1b-cd85-49fb-9309-4c30e037d5c7.PNG)
+
 AWS 리전: 어디에 있는 컴퓨터를 빌려 쓰는가?
+
 객체 소유권 - ACL 비활성화 (권장)
 ![2](https://user-images.githubusercontent.com/56298540/209651442-102a6661-bd6d-47b9-89b0-591bf7b3f4be.PNG)
 ![3](https://user-images.githubusercontent.com/56298540/209651769-907f926a-a16b-4b24-9b85-aa82079a8953.PNG)
+
 :star: 중요. 퍼블릭 엑세스 차단 해제 > 우리가 만드는 웹에 모두가 접근하게 하기 위해서
 
 주의(빨간 세모)박스에는 체크.
@@ -239,6 +247,7 @@ AWS 리전: 어디에 있는 컴퓨터를 빌려 쓰는가?
 #### 2. 프로젝트 build 실행하고 버킷에 파일 업로드하기
 
 ![5](https://user-images.githubusercontent.com/56298540/209653758-d490e890-d391-49e7-b41e-b8a9a6f39087.PNG)
+
 프로젝트 **build 폴더**에 있는 파일을 업로드 합니다.
 
 ![6](https://user-images.githubusercontent.com/56298540/209654335-94dc3f49-154c-44d4-aa74-8580bb7df74e.PNG)
@@ -249,6 +258,7 @@ AWS 리전: 어디에 있는 컴퓨터를 빌려 쓰는가?
   * 따라서 AWS S3 기능으로는 Next.js로 만든 웹 페이지를 호스팅할 수 없음. AWS EC2라는 기능이 있다고 함.
 - 인덱스 문서 - 특정한 웹사이트로 버킷에 접속하면 처음으로 보여줄 기본 페이지
   ![7](https://user-images.githubusercontent.com/56298540/209654504-f77f29b1-c4ca-4161-ac85-75e752a368bf.PNG)
+
   호스팅을 활성화 하면 주소를 받습니다.
 
   하지만 처음엔 `403 Forbidden` 에러가 발생합니다.
@@ -266,6 +276,7 @@ AWS 리전: 어디에 있는 컴퓨터를 빌려 쓰는가?
   권한 탭에 들어가서 버킷 정책으로 이동한다.
 
   ![8](https://user-images.githubusercontent.com/56298540/209656688-11a1e1c0-b2dd-45ba-8581-d5dbf6b41f37.PNG)
+
   버킷 정책에서 엑세스 권한 설정이 가능하다. Json 파일로 제작
 
 ```json
@@ -284,6 +295,7 @@ AWS 리전: 어디에 있는 컴퓨터를 빌려 쓰는가?
 ```
 
 ![9](https://user-images.githubusercontent.com/56298540/209677998-9648ba28-091f-4a2b-b316-036fbebf721d.PNG)
+
 버킷 정책에서 권한을 모두에게 허용하면, `403` forbidden error가 사라지고 잘 작동하는 것을 확인할 수 있습니다.
 
 여기까지 aws에 파일을 올려서 한 수동적인 배포!
@@ -297,8 +309,10 @@ AWS 공식 DOC에서 AWS CLI를 설치한다.
 > AWS CLI란? AWS Command Line Interface, 터미널에서 AWS 실행을 가능하게 해주는 오픈 소스 도구
 
 ![10](https://user-images.githubusercontent.com/56298540/209680950-107a48c8-49c4-4d20-bbcc-f4c61da73020.PNG)
+
 유저탭을 클릭해 보안자격증명 페이지로 들어가 **엑세스키 만들기** 버튼을 클릭한다.
 ![11](https://user-images.githubusercontent.com/56298540/209681592-710b2559-db6c-4594-8c82-2a351d202783.PNG)
+
 엑세스키 만들기 버튼을 눌러 단계를 진행하면 만들어진 엑세스키를 보여준다.
 
 - 엑세스 키 = 사용자의 아이디
@@ -306,18 +320,22 @@ AWS 공식 DOC에서 AWS CLI를 설치한다.
   :star: 중요! 비밀 엑세스 키는 처음 만든 상황 이후에는 보이지 않으니 따로 저장해 두어야 한다.
 
 ![12](https://user-images.githubusercontent.com/56298540/209682705-fc4b4dd9-8c89-4cb3-9992-41223b2c0ece.PNG)
+
 터미널에서 `aws configure --profile <프로필 이름>`을 입력해 프로젝트 배포에 사용될 프로필을 설정한다.
 
 - Default region name: ap-northeast-2 // 서울
 
 ![13](https://user-images.githubusercontent.com/56298540/209683241-d1898799-b97a-435d-a38f-266debe09782.PNG)
+
 `aws configure list-profiles`명령어를 통해 생성된 프로필을 확인할 수 있다.
 
 ![14](https://user-images.githubusercontent.com/56298540/209684158-4a0b55a5-ed0b-427c-819c-732027ea6a62.PNG)
+
 `aws s3 sync build/ s3://<aws 페이지에서 생성한 버킷 이름> --delete --profile <사용할 프로필 이름>`
 : aws 페이지에서 작성한 버킷의 객체를 모두 지우고 현재 루트에 있는 build파일을 모두 업로드 한다.
 
 ![15](https://user-images.githubusercontent.com/56298540/209684735-ef843314-8642-4c33-bcc3-0001460fee42.PNG)
+
 aws 페이지에서도 파일들이 업로드 된것을 확인할 수 있다.
 프로젝트의 내용이 변경된 경우, build하고 다시 버킷에 파일을 업로드하면 변경된 내용을 확인할 수 있다.
 
@@ -355,13 +373,16 @@ jobs:
 
 엑세스 키 비밀번호를 숨기기 위해 깃헙에서 자체적으로 제공해주는 기능을 사용한다.
 ![21](https://user-images.githubusercontent.com/56298540/209705093-19c24a68-efd8-40bb-b5f5-aa3998b7fedf.PNG)
+
 Settings> secrets/Actions > New repository secret
 중요. 수정은 가능하지만 원래 저장했던 내용은 볼 수 없다.
 ![22](https://user-images.githubusercontent.com/56298540/209705547-05681444-5d0c-4b4f-a6ad-daf25412a054.PNG)
+
 환경변수는 생성했던 버킷 이름, ID, 비밀번호를 설정하면 된다.
 
 main 브랜치에 push를 날리면
 ![23](https://user-images.githubusercontent.com/56298540/209706474-f1d6c590-e149-439f-b7e2-809f7a5aa948.PNG)
+
 actions탭에서 CD가 성공적으로 구축된 것을 확인할 수 있다.
 
 ## 팀원들과 토론할 점
