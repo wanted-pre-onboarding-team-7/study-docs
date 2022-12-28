@@ -9,7 +9,7 @@
 
 * github actions: 자동화를 가능하게 해주는 하나의 가상 컴퓨터
 
-## CI (Continuos Integration) - 지속적인 통합
+## CI (continuous Integration) - 지속적인 통합
 
 : 새로운 코드의 변경 사항이 빌드 및 테스트 되어 공유 레포지토리에 지속적으로(=자동적으로)통합되는 것
 
@@ -17,7 +17,7 @@
 
 * CI를 위해 작성된 스크립트를 통해 테스트의 과정이 자동으로 진행된다.
 
-## CD (Continuous Delivery(or Deployment)) - 지속적인 제공(or 배포)
+## CD (continuous Delivery(or Deployment)) - 지속적인 제공(or 배포)
 
 ![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FeeSLmu%2FbtqI9pXqCN8%2FiIopSPh3KSK1SwhRjkWPf1%2Fimg.png)
 
@@ -66,7 +66,7 @@ on:
   push: // push event
     branches:
       - main
-   pull_request: // pr event
+  pull_request: // pr event
     branches:
       - main
   workflow_dispatch: // github actions 페이지에서 workflow를 실행할 수 있는 기능을 추가하는 이벤트
